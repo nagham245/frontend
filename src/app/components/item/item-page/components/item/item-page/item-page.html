@@ -1,0 +1,13 @@
+<button (click)="toggleForm()">+ Add Item</button>
+
+<div *ngIf="showForm">
+  <app-item-form (itemSaved)="onItemSaved()"></app-item-form>
+</div>
+
+<hr />
+
+<app-item-list 
+  [items]="items" 
+  (delete)="deleteItem($event)" 
+  (edit)="editItem($event)">
+</app-item-list>

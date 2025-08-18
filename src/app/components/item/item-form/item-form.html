@@ -1,0 +1,7 @@
+<form (ngSubmit)="saveItem()" enctype="multipart/form-data" class="item-form">
+  <input type="text" [(ngModel)]="item.name" name="name" placeholder="Name" required />
+  <input type="number" [(ngModel)]="item.price" name="price" placeholder="Price" required />
+  <textarea [(ngModel)]="item.description" name="description" placeholder="Description"></textarea>
+  <input type="file" (change)="onFileSelected($event)" required />
+  <button type="submit">Save</button>
+</form>
