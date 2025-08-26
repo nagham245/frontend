@@ -1,5 +1,5 @@
 .card {
-  max-width: 420px;
+  max-width: 520px;
   margin: 2rem auto;
   padding: 1.5rem;
   border: 1px solid #e5e7eb;
@@ -19,22 +19,27 @@ label {
   font-size: 0.9rem;
   color: #374151;
 }
-input {
+input[type="text"],
+input[type="email"],
+input[type="password"] {
   padding: 0.6rem 0.75rem;
   border: 1px solid #d1d5db;
   border-radius: 10px;
   outline: none;
 }
 input:focus {
-  border-color: #6366f1;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+}
+input[type="file"] {
+  padding: 0.4rem 0;
 }
 button {
   width: 100%;
   padding: 0.7rem;
   border: none;
   border-radius: 12px;
-  background: #6366f1;
+  background: #10b981;
   color: #fff;
   font-weight: 600;
   cursor: pointer;
@@ -47,9 +52,19 @@ button[disabled] {
   color: #b91c1c;
   font-size: 0.8rem;
 }
+.hint {
+  color: #6b7280;
+  font-size: 0.85rem;
+}
 .server-error {
   margin-top: 0.75rem;
   color: #b91c1c;
   font-size: 0.9rem;
+  text-align: center;
+}
+.server-success {
+  margin-top: 0.75rem;
+  color: #065f46;
+  font-size: 0.95rem;
   text-align: center;
 }

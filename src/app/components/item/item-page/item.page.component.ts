@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ItemFormComponent } from '../../../../item-form/item-form';
-import { ItemService } from '../../../../../../services/item/item.service';
-import { Item } from '../../../../../../models/item.model';
-import { ItemListComponent } from '../../../../item-list/item-list';
+import { ItemFormComponent } from '../item-form/item-form';
+import { Item } from '../../../models/item.model';
+import { ItemService } from '../../../services/item/item.service';
+import { ItemListComponent } from '../item-list/item-list';
 
 @Component({
   selector: 'app-item-page',
   standalone: true,
   imports: [CommonModule, ItemFormComponent, ItemListComponent],
-  templateUrl: './item-page.html',
-  styleUrls: ['./item-page.css']
+  templateUrl: './item-page.component.html',
+  styleUrls: ['./item-page.component.css']
 })
+
 export class ItemPageComponent implements OnInit {
   items: Item[] = [];
   showForm = false;

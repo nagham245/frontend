@@ -1,0 +1,94 @@
+<section class="card">
+  <h2>Sign Up</h2>
+
+  <form #signUpForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+    <!-- Name -->
+    <div class="field">
+      <label>Name</label>
+      <input
+        type="text"
+        name="name"
+        ngModel
+        required
+        minlength="3"
+        #nameRef="ngModel"
+      />
+      @if (nameRef.invalid && nameRef.touched) {
+      <p class="error">Name is required (min 3 chars)</p>
+      }
+    </div>
+
+    <!-- Email -->
+    <div class="field">
+      <label>Email</label>
+      <input
+        type="email"
+        name="email"
+        ngModel
+        required
+        email
+        #emailRef="ngModel"
+      />
+      @if (emailRef.invalid && emailRef.touched) {
+      <p class="error">Valid email is required</p>
+      }
+    </div>
+
+    <!-- Password -->
+    <div class="field">
+      <label>Password</label>
+      <input
+        type="password"
+        name="password"
+        ngModel
+        required
+        minlength="6"
+        #passwordRef="ngModel"
+      />
+      @if (passwordRef.invalid && passwordRef.touched) {
+      <p class="error">Password must be at least 8 characters</p>
+      }
+    </div>
+
+    <!-- Confirm Password -->
+    <div class="field">
+      <label>Confirm Password</label>
+      <input
+        type="password"
+        name="confirmPassword"
+        ngModel
+        required
+        minlength="6"
+        #confirmRef="ngModel"
+      />
+      @if (confirmRef.invalid && confirmRef.touched) {
+      <p class="error">Confirm your password</p>
+      } @if (passwordMismatch) {
+      <p class="error">Passwords do not match</p>
+      }
+    </div>
+
+    <!-- Photo -->
+    <div class="field">
+      <label>Photo</label>
+      <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+      @if (!selectedFileName) {
+      <p class="hint">No file chosen</p>
+      } @if (selectedFileName) {
+      <p class="hint">{{ selectedFileName }}</p>
+      }
+    </div>
+
+    <!-- Submit -->
+    <button type="submit" [disabled]="signUpForm.invalid || loading">
+      {{ loading ? "Creating..." : "Create Account" }}
+    </button>
+
+    <!-- Messages -->
+    @if (serverError) {
+    <p class="server-error">{{ serverError }}</p>
+    } @if (serverSuccess) {
+    <p class="server-success">{{ serverSuccess }}</p>
+    }
+  </form>
+</section>

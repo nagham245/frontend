@@ -1,17 +1,16 @@
 import { Routes } from '@angular/router';
-import { SigninComponent } from './components/signin/signin';
-import { ItemPageComponent } from './components/item/item-page/components/item/item-page/item-page';
 import { authGuard } from './auth.guard';
+import { ItemPageComponent } from './components/item/item-page/item.page.component';
+import { HomeComponent } from './components/home/home.component';
+import { SignupComponent } from './components/signup/signup';
 import { LoginComponent } from './components/login/login.component';
 
 export const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SigninComponent },
-  {
-    path: 'items',
-    component: ItemPageComponent,
-    canActivate: [authGuard]   
-  },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: '**', redirectTo: '/login' }
+  { path: 'home', component: HomeComponent },
+  { path: 'items', component: ItemPageComponent, canActivate: [authGuard] },
+  { path: 'signup', component: SignupComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: 'login', component: LoginComponent },   // 👈 ضفنا ده
+
+  { path: '**', redirectTo: '/home' }
 ];
